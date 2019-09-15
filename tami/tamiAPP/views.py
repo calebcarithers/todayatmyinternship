@@ -12,6 +12,7 @@ def submit_page(request):
             form = {
                 "object_list" : userSubForm
             }
+            return redirect("/")
 
     else:
         form = {
@@ -22,6 +23,9 @@ def submit_page(request):
     return render(request, "tamiAPP/submit.html", form)
 
 def home_page(request):
+    if request.method == "POST":
+        print("Post request sent")
+
     queryset = userSub.objects.all()
 
     for this in queryset:

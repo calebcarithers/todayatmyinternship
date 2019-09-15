@@ -2,11 +2,48 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<form method="POST"> {% csrf_token %}
-    <div class="form-group">
-    {{ object_list|crispy }}
-    <input type="submit" value="Save">
-    </div>
-</form>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 mt-3 submit-form text-center">
+    <form method="POST"> {% csrf_token %}
+        <div class="form-group">
+            {{ object_list|crispy }}
+            <input type="submit" class="submit-form-button mt-3 rounded" value="Save">
+        </div>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var mqBig = window.matchMedia('(min-width: 992px)');
+        var mqSmall = window.matchMedia('(max-width: 992px)');
+
+        var mqBigToSmall = window.matchMedia('(max-width: 992px)');
+        var mqSmallToBig = window.matchMedia('(min-width: 992px)');
+
+        if (mqBig.matches) {
+
+        } else if (mqSmall.matches) {
+            $(".description").after("<div class='row'><div class='col'><p class='text-center' id='at'>@</p></div></div>");
+            $("#at").remove();
+
+        }
+
+        function changeForSmall(e) {
+            if (e.matches) {
+                $("#at").remove();
+                $(".description").after("<div class='row'><div class='col'><p class='text-center' id='at'>@</p></div></div>");
+            }
+        }
+
+        function changeForBig(e) {
+            if (e.matches) {
+                $("#at").remove();
+                $("#before-at").after("<h1 class='text-right' id='at'>@</h1>")
+            }
+        }
+
+        mqBigToSmall.addListener(changeForSmall);
+        mqSmallToBig.addListener(changeForBig);
+    })
+</script>
 {% endblock %}
 

@@ -1,13 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 pt-3 scroll">
     <div class="content">
         {% for instance in object_list %}
-            <p style="padding-bottom:35px;">{{ instance.description }} @ {{ instance.where }}</p>
+        <div class="row">
+            <div class="col-1 text-right mt-3 arrow-col">
+                <p><a href="/">&uarr;</a><br><a href="/">&darr;</a></p>
+            </div>
+            <div class="col-11 text-left">
+                <p class="pb-2 content-col">{{ instance.description }} @ <a class="company" href="place_detail/{{ instance.where }}">{{ instance.where }}</a></p>
+            </div>
+        </div>
         {% endfor %}
     </div>
 </div>
+
+<script>
+$(function() {
+    $(".company").on("click", function(e) {
+        e.preventDefault();
+        $.post($(this)[0].innerHTML));
+        console.log($(this)[0].innerHTML);
+    })
+})
+</script>
 
 {% endblock %}
 

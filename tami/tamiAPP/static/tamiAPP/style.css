@@ -1,5 +1,50 @@
+/*html, body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}*/
+
+.content {
+    font-family: sans-serif;
+    font-size: 4em;
+    line-height: 0.9em;
+    color: lightgrey;
+    margin-bottom: 200px;
+    overflow-x: hidden;
+}
+
+#submit-home-button {
+    color: darkgrey;
+}
+
+.description, .where {
+    font-color: purple;
+    border-width: 3.5px;
+    border-style: solid;
+    border-color: black;
+    height: 20vh;
+    width: 50vmax;
+    line-height: 20px;
+    border-radius: 5px;
+    font-size: 100px;
+    padding-left: 10px;
+}
+
+::placeholder {
+    color: lightgrey;
+}
+
+.description {
+    margin-bottom: 4px;
+}
+
+.where {
+    margin-top: 4px;
+}
+
+
+
 #title {
-    font-size: calc(1em + 8vmax);
+    font-size: calc(1em + 6.5vmax);
     line-height: calc(0.6em + 4vmax);
     font-family:sans-serif;
     font-weight: bold;
@@ -7,16 +52,11 @@
     //background: green;
 }
 
-.content {
-    font-family: sans-serif;
-    font-size: 5em;
-    line-height: 0.9em;
-    color: lightgrey;
+#at {
+    font-size: 90px;
+    line-height: 80px;
 }
 
-#submit {
-    color: lightgrey;
-}
 
 @media (min-width: 576px) {
     #title {
@@ -33,4 +73,25 @@
         //background: orange;
     }
 
+}
+
+.arrow-col {
+    font-size: 20px;
+    line-height: 20px;
+}
+
+.arrow-col a {
+    color: lightgrey;
+}
+
+.content-col a {
+    color: darkgrey;
+}
+
+.scroll {
+    padding-left: 8px;
+    padding-right: 0px;
+    height: 100vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }

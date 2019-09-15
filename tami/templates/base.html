@@ -5,17 +5,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static "tamiApp/style.css" %}">
         <title>todayatmyinternship</title>
+
+        <style>
+            html, body {
+                overflow-x; hidden;
+                overflow-y: hidden;
+            }
+        </style>
 
     </head>
 
     <body>
-    <div class="container">
-        <div class="row text-left">
+    <div class="container h-100 my-container">
+        <div class="row text-center">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
                 <h1 id="title">today @ my internship I:</h1>
-                <a id="submit" href="/submit">submit</a>
+                <a id="submit-home-button" href="/submit">submit</a>
             </div>
 
 
