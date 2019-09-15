@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import submit_page, home_page
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('tamiAPP.urls'))
+    path('', home_page, name="home"),
+    path('submit/', submit_page, name="submit")
+
 ]
