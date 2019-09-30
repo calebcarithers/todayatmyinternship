@@ -36,6 +36,16 @@ def home_page(request):
     }
     return render(request, "tamiAPP/home.html", context)
 
+def detail_page(request, company=""):
+    queryset = userSub.objects.filter(where__exact=company)
+    context = {
+        "object_list":queryset,
+        "company":company
+    }
+
+    print(company)
+    return render(request, "tamiAPP/detail.html", context)
+
 
 
 

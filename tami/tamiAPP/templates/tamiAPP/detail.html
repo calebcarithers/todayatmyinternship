@@ -1,0 +1,50 @@
+{% extends "detail_base.html" %}
+
+{% block head %}
+<title>today@{{ company }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="row text-center title-row">
+    <div class="col-12">
+        <h1 id="title">interns @ <span class="company">{{company}}:</span></h1>
+    </div>
+</div>
+
+<div class="row menu-row">
+    <div class="col-6 text-center">
+        <a id="submit-home-button" href="/">home</a> , <a id="submit-home-button" href="/submit">submit</a> , <a href="/shop">shop</a>
+    </div>
+    <div class="col-6 text-center">
+        <span class="sort">sort: </span><a href="/top">top</a> , <a href="/new">new</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 pt-3">
+        <div class="content">
+            {% for instance in object_list %}
+            <div class="row">
+                <div class="col-1 text-right mt-3 arrow-col">
+                    <p><a href="/">&uarr;</a><br><a href="/">&darr;</a></p>
+                </div>
+                <div class="col-11 text-left">
+                    <p class="pb-2 content-col">{{ instance.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+
+<!--        <div class="row justify-content-center">-->
+<!--            <div class="col justify-content-center">-->
+
+<!--            </div>-->
+<!--        </div>-->
+        </div>
+
+{% endblock %}
+

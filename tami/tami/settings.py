@@ -25,7 +25,7 @@ SECRET_KEY = 'li)q3h3n=co-()im50&-l!o)ly_0428e^u$egc@(o0az(3ohy0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['fuzzy-bobcat-100.localtunnel.me', '127.0.0.1']
+ALLOWED_HOSTS = ['terrible-fish-6.localtunnel.me', '127.0.0.1']
 
 
 # Application definition

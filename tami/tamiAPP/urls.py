@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from .views import submit_page, home_page
+from .views import submit_page, home_page, detail_page
 
 urlpatterns = [
     path('', home_page, name="home"),
-    path('submit/', submit_page, name="submit")
-
+    path('submit/', submit_page, name="submit"),
+    path('company/<str:company>', detail_page, name="detail"),
 ]

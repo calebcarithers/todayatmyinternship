@@ -1,36 +1,37 @@
-/*html, body {
-    overflow-x: hidden;
-    overflow-y: hidden;
-}*/
-
-.content {
-    font-family: sans-serif;
-    font-size: 4em;
-    line-height: 0.9em;
-    color: lightgrey;
-    margin-bottom: 200px;
-    overflow-x: hidden;
+body, html {
+    font-family: 'Merriweather', serif;
+    word-wrap: break-word;
 }
 
 #submit-home-button {
-    color: darkgrey;
+
 }
 
-.description, .where {
-    font-color: purple;
-    border-width: 3.5px;
-    border-style: solid;
-    border-color: black;
-    height: 20vh;
-    width: 50vmax;
-    line-height: 20px;
-    border-radius: 5px;
-    font-size: 100px;
-    padding-left: 10px;
+.submit-form-button {
+    border: none;
+    background: #F8F8F8;
+    color: lightgrey;
 }
 
 ::placeholder {
     color: lightgrey;
+}
+
+.description, .where {
+    height: 20vh;
+    width: 50vmax;
+    line-height: 20px;
+    font-size: 100px;
+    padding-left: 10px;
+    background: #F8F8F8;
+    color: lightgrey;
+    border: none;
+}
+
+.where {
+    font-weight: bold;
+    font-style: oblique;
+    color: #AAAAAA;
 }
 
 .description {
@@ -41,38 +42,40 @@
     margin-top: 4px;
 }
 
-
+.at {
+    font-size: 5.5vw;
+    color: #AAAAAA;
+}
 
 #title {
-    font-size: calc(1em + 6.5vmax);
-    line-height: calc(0.6em + 4vmax);
-    font-family:sans-serif;
+    font-size: calc(1em + 4.5vmax);
+    line-height: calc(0.6em + 3.8vmax);
     font-weight: bold;
     margin-bottom: 0px;
     //background: green;
 }
 
-#at {
-    font-size: 90px;
-    line-height: 80px;
-}
-
-
 @media (min-width: 576px) {
     #title {
             font-size:calc(2.8em + 3.6vw);
-            line-height: calc(0.75em + 1vh + 1.1vw);
+            line-height: calc(0.75em + 1.4vh + 2vw);
             //background: yellow;
     }
 }
 
 @media (min-width: 992px) {
     #title {
-        font-size:calc(1em + 4vw);
+        font-size:calc(1em + 4.5vw);
         line-height: calc(0.75em + 0.5vh + 1vw);
         //background: orange;
     }
 
+}
+
+.content {
+    font-size: 4em;
+    line-height: 1.09em;
+    color: lightgrey;
 }
 
 .arrow-col {
@@ -88,10 +91,37 @@
     color: darkgrey;
 }
 
-.scroll {
-    padding-left: 8px;
-    padding-right: 0px;
-    height: 100vh;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+.company {
+    font-weight: bold;
+    font-style: oblique;
+    color:#AAAAAA;
+}
+
+.menu-row {
+    font-weight: bold;
+    color: lightgrey;
+    padding-top: .7em;
+    padding-bottom: .5em;
+}
+
+.menu-row a {
+    color: lightgrey;
+}
+
+.title-row {
+    padding-top: 1em;
+}
+
+.sort {
+    color: grey;
+}
+
+.up-arrow, .down-arrow {
+    display: inline-block;
+}
+
+.date-row {
+    font-size: 10px;
+    padding: 0 0 0 0;
+    line-height: 10px;
 }

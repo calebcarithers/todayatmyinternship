@@ -1,29 +1,49 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 pt-3 scroll">
-    <div class="content">
-        {% for instance in object_list %}
-        <div class="row">
-            <div class="col-1 text-right mt-3 arrow-col">
-                <p><a href="/">&uarr;</a><br><a href="/">&darr;</a></p>
-            </div>
-            <div class="col-11 text-left">
-                <p class="pb-2 content-col">{{ instance.description }} @ <a class="company" href="place_detail/{{ instance.where }}">{{ instance.where }}</a></p>
-            </div>
-        </div>
-        {% endfor %}
+<div class="row menu-row">
+    <div class="col-6 text-center">
+        <a id="submit-home-button" href="/submit">submit</a> , <a href="/shop">shop</a>
+    </div>
+    <div class="col-6 text-center">
+        sort: <a href="/top">top</a> , <a href="/new">new</a>
     </div>
 </div>
 
+
+<div class="content">
+    {% for instance in object_list %}
+    <div class="row">
+        <div class="col-1 mt-3 arrow-col">
+            <p name="{{instance.pk}}"><span class="up-arrow rounded">&uarr;</span><br><span class="down-arrow rounded">&darr;</span></p>
+        </div>
+        <div class="col-11">
+            <p class="pb-0 mb-2 content-col">{{ instance.description }} @ <a class="company" href="company/{{ instance.where }}">{{ instance.where }}</a></p>
+
+            <div class="row date-row">
+                <div class="col-12 text-right mb-4">
+                    {{ instance.created_at }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
 <script>
-$(function() {
-    $(".company").on("click", function(e) {
-        e.preventDefault();
-        $.post($(this)[0].innerHTML));
-        console.log($(this)[0].innerHTML);
+    $(document).ready(function() {
+        $(".up-arrow, .down-arrow").click(function () {
+            var pk;
+            pk = $(this).parent().attr("name");
+            console.log(pk);
+            console.log($(this)[0].className)
+        }).on("mouseover", function() {
+            $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+        }).on("mouseleave", function() {
+            $(this).css({"background":"white"})
+        })
     })
-})
 </script>
 
 {% endblock %}
