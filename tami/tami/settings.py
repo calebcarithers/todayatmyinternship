@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from .keys import dbPass
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,7 @@ SECRET_KEY = 'li)q3h3n=co-()im50&-l!o)ly_0428e^u$egc@(o0az(3ohy0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['terrible-fish-6.localtunnel.me', '127.0.0.1']
+ALLOWED_HOSTS = ['.todayatmyinternship.com', '165.22.7.233', '127.0.0.1']
 
 
 # Application definition
@@ -77,8 +78,12 @@ WSGI_APPLICATION = 'tami.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tami',
+        'USER': 'calebcarithers',
+        'PASSWORD': dbPass,
+        'HOST':'localhost',
+        'PORT':''
     }
 }
 
@@ -120,6 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = '/home/calebcarithers/todayatmyinternship.com/tamiENV/src/static/'
+STATICFILES_DIRS = (
+                    '/home/calebcarithers/todayatmyinternship.com/tamiENV/src/tamiAPP/static/',
+)
