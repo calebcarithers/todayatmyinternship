@@ -33,16 +33,28 @@
 
 <script>
     $(document).ready(function() {
-        $(".up-arrow, .down-arrow").click(function () {
-            var pk;
-            pk = $(this).parent().attr("name");
-            console.log(pk);
-            console.log($(this)[0].className)
-        }).on("mouseover", function() {
-            $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
-        }).on("mouseleave", function() {
-            $(this).css({"background":"white"})
-        })
+
+        function isTouchDevice() {
+            return 'ontouchstart' in document.documentElement;
+        }
+
+        if (isTouchDevice()) {
+            $(".up-arrow, .down-arrow").click(function () {
+                var pk = $(this).parent().attr("name");
+            }).on("touchstart", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("touchend", function() {
+                $(this).css({"background":"white"})
+            })
+        } else {
+            $(".up-arrow, .down-arrow").click(function () {
+                var pk = $(this).parent().attr("name");
+            }).on("mouseover", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("mouseleave", function() {
+                $(this).css({"background":"white"})
+            })
+        }
     })
 </script>
 
