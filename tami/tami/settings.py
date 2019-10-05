@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from .keys import keys
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -101,18 +102,13 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'home'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '2677398542272471'
-SOCIAL_AUTH_FACEBOOK_SECRET = '27d7e25d02dd0e177e828490b855b826'
+SOCIAL_AUTH_FACEBOOK_KEY = keys.fbKey
+SOCIAL_AUTH_FACEBOOK_SECRET = keys.fbSecretKey
 
-SOCIAL_AUTH_INSTAGRAM_KEY = 'da1dfeb2f31b4453abf771bf7d18b754'  # Client ID
-SOCIAL_AUTH_INSTAGRAM_SECRET = 'f304d62559e24a6e94a3b44fe9e52dd2'  # Client SECRET
+SOCIAL_AUTH_INSTAGRAM_KEY = keys.instaKey  # Client ID
+SOCIAL_AUTH_INSTAGRAM_SECRET = keys.instaSecretKey  # Client SECRET
 SOCIAL_AUTH_INSTAGRAM_EXTRA_DATA = [('user', 'user'),]
 SOCIAL_AUTH_INSTAGRAM_REDIRECT_URL = 'http://localhost:8000/complete/instagram'
-
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = '788botfmy9wwv1'      #Client ID
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = 'RwzGlX4NolrONM9Q'  #Client Secret
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
-SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'formatted-name', 'public-profile-url', 'picture-url']
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
