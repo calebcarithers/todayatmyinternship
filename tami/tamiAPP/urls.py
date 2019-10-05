@@ -15,11 +15,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
-from .views import submit_page, home_page, detail_page
+from .views import submit_page, home_page, new_home_page, detail_page, login_page
+
+
 
 urlpatterns = [
     path('', home_page, name="home"),
-    path('submit/', submit_page, name="submit"),
     path('company/<str:company>', detail_page, name="detail"),
+    path('new/', new_home_page, name="new"),
+    path('new/company/<str:company>', detail_page, name="detail"),
+    path('top/', home_page, name="home"),
+    path('top/company/<str:company>', detail_page, name="detail"),
+    path('submit/', submit_page, name="submit"),
+    path('login/', login_page, name="login"),
+    path('logout/', auth_views.LogoutView.as_view(), name="logout"),
+    path('social-auth/', include('social_django.urls', namespace="social"))
 ]

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row menu-row">
+    <div class="col-6 text-center">
+        <a id="submit-home-button" href="/submit">submit</a> , <a href="/shop">shop</a>
+    </div>
+    <div class="col-6 text-center">
+        sort: <a href="/top">top</a> , <a href="/new">new</a>
+    </div>
+</div>
+
+
+<div class="content">
+    <div class="row text-center">
+        <div class="col-12">
+            <a href="{% url 'social:begin' 'facebook' %}">Facebook</a> <br>
+            <a href="{% url 'social:begin' 'instagram' %}"> Instagram</a><br>
+            <a href="{% url 'social:begin' 'linkedin-oauth2' %}">LinkedIn</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+
+        function isTouchDevice() {
+            return 'ontouchstart' in document.documentElement;
+        }
+
+        if (isTouchDevice()) {
+            $(".up-arrow, .down-arrow").click(function () {
+                var pk = $(this).parent().attr("name");
+            }).on("touchstart", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("touchend", function() {
+                $(this).css({"background":"white"})
+            })
+        } else {
+            $(".up-arrow, .down-arrow").click(function () {
+                var pk = $(this).parent().attr("name");
+            }).on("mouseover", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("mouseleave", function() {
+                $(this).css({"background":"white"})
+            })
+        }
+    })
+</script>
+
+{% endblock %}
+

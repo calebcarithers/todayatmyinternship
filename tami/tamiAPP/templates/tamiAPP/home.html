@@ -3,7 +3,12 @@
 {% block content %}
 <div class="row menu-row">
     <div class="col-6 text-center">
-        <a id="submit-home-button" href="/submit">submit</a> , <a href="/shop">shop</a>
+        <a id="submit-home-button" href="/submit">submit</a> , <a href="/shop">shop</a> ,
+        {% if logged_in == False %}
+            <a href="/login">login</a>
+        {% elif logged_in == True %}
+            <a href="/logout">logout</a>
+        {% endif %}
     </div>
     <div class="col-6 text-center">
         sort: <a href="/top">top</a> , <a href="/new">new</a>
@@ -15,7 +20,8 @@
     {% for instance in object_list %}
     <div class="row">
         <div class="col-1 mt-3 arrow-col">
-            <p name="{{instance.pk}}"><span class="up-arrow rounded">&uarr;</span><br><span class="down-arrow rounded">&darr;</span></p>
+            {% csrf_token %}
+            <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded">&uarr;</span><br><span name="down" class="down-arrow rounded">&darr;</span></p>
         </div>
         <div class="col-11">
             <p class="pb-0 mb-2 content-col">{{ instance.description }} @ <a class="company" href="company/{{ instance.where }}">{{ instance.where }}</a></p>
@@ -41,6 +47,16 @@
         if (isTouchDevice()) {
             $(".up-arrow, .down-arrow").click(function () {
                 var pk = $(this).parent().attr("name");
+                var which = $(this).attr("name");
+                console.log(pk);
+                console.log(which);
+
+                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
+                $.post('.', {
+                    item_pk: pk,
+                    item_vote: which,
+                    csrfmiddlewaretoken: CSRFtoken
+                })
             }).on("touchstart", function() {
                 $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
             }).on("touchend", function() {
@@ -49,6 +65,17 @@
         } else {
             $(".up-arrow, .down-arrow").click(function () {
                 var pk = $(this).parent().attr("name");
+                var which = $(this).attr("name");
+                console.log(pk);
+                console.log(which);
+
+                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
+                $.post('.', {
+                    item_pk: pk,
+                    item_vote: which,
+                    csrfmiddlewaretoken: CSRFtoken
+                })
+
             }).on("mouseover", function() {
                 $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
             }).on("mouseleave", function() {
