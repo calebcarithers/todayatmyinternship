@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="row menu-row">
@@ -8,41 +9,42 @@
 </div>
 
 
-
 <div class="content">
     <div class="row">
         <div class="col text-center login-text">
             register/login
         </div>
     </div>
-<!--    <form>-->
-<!--        <div class="form-group row justify-content-center">-->
-<!--                <div class="col-6">-->
-<!--                    <label for="userEmail" class="form-label-sm">email</label>-->
-<!--                    <input type="email" class="form-control" id="userEmail" placeholder="email">-->
-<!--                </div>-->
-<!--        </div>-->
-<!--        <div class="form-group row justify-content-center">-->
-<!--                <div class="col-6">-->
-<!--                    <label for="userPass">password</label>-->
-<!--                    <input type="password" class="form-control" id="userPass" placeholder="password">-->
-<!--                </div>-->
-<!--        </div>-->
-<!--        <div class="form-group row justify-content-center">-->
-<!--            <div class="col-6 text-center">-->
-<!--                <button type="submit" class="btn btn-light">Submit</button>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
 
-<!--    <div class="row">-->
-<!--        <div class="col-12 text-center or">-->
-<!--            or-->
-<!--        </div>-->
-<!--    </div>-->
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group row justify-content-center">
+            <div class="col-6">
+                <label for="{{ form.username.id_for_label }}">username</label>
+                <input class="form-control" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" placeholder="username">
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+                <div class="col-6">
+                    <label for="{{ form.password.id_for_label }}">password</label>
+                    <input type="password" class="form-control" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" placeholder="password">
+                </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <div class="col-6 text-center">
+                <button type="submit" class="btn btn-light">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-12 text-center or">
+            or
+        </div>
+    </div>
 
 
-    <div class="row text-center mt-5">
+    <div class="row text-center mt-1">
         <div class="col-12 login">
             <div class="row justify-content-center login-row">
                 <div class="col-6 rounded login-type">

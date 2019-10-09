@@ -91,7 +91,7 @@ DATABASES = {
 }
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.linkedin.LinkedinOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.instagram.InstagramOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
@@ -109,6 +109,9 @@ SOCIAL_AUTH_INSTAGRAM_KEY = keys.instaKey  # Client ID
 SOCIAL_AUTH_INSTAGRAM_SECRET = keys.instaSecretKey  # Client SECRET
 SOCIAL_AUTH_INSTAGRAM_EXTRA_DATA = [('user', 'user'),]
 SOCIAL_AUTH_INSTAGRAM_REDIRECT_URL = 'http://localhost:8000/complete/instagram'
+
+SOCIAL_AUTH_TWITTER_KEY = keys.twitterKey
+SOCIAL_AUTH_TWITTER_SECRET = keys.twitterSecretKey
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

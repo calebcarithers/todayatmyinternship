@@ -18,6 +18,66 @@
         {% block content %}{% endblock %}
     </div>
 
+    <script>
+    $(document).ready(function() {
+
+        function isTouchDevice() {
+            return 'ontouchstart' in document.documentElement;
+        }
+
+        if (isTouchDevice()) {
+            $(".up-arrow, .down-arrow").click(function () {
+                var pk = $(this).parent().attr("name");
+                var which = $(this).attr("name");
+                console.log(pk);
+                console.log(which);
+
+                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
+                $.post('.', {
+                    item_pk: pk,
+                    item_vote: which,
+                    csrfmiddlewaretoken: CSRFtoken
+                })
+            }).on("touchstart", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("touchend", function() {
+                $(this).css({"background":"white"})
+            })
+
+            $(".menu-row").find("a").on("touchstart", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("touchend", function() {
+                $(this).css({"background":"white"})
+            })
+        } else {
+            $(".up-arrow, .down-arrow").click(function () {
+                var pk = $(this).parent().attr("name");
+                var which = $(this).attr("name");
+                console.log(pk);
+                console.log(which);
+
+                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
+                $.post(window.location.pathname, {
+                    item_pk: pk,
+                    item_vote: which,
+                    csrfmiddlewaretoken: CSRFtoken
+                })
+
+            }).on("mouseover", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("mouseleave", function() {
+                $(this).css({"background":"white"})
+            })
+
+            $(".menu-row").find("a").on("mouseover", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("mouseleave", function() {
+                $(this).css({"background":"white"})
+            })
+        } //end else
+    })
+</script>
+
         <script
   src="https://code.jquery.com/jquery-3.4.1.js"
   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="

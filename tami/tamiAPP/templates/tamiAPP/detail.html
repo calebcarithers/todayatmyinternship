@@ -12,11 +12,13 @@
 </div>
 
 <div class="row menu-row">
-    <div class="col-6 text-center">
-        <a id="submit-home-button" href="/">home</a> , <a id="submit-home-button" href="/submit">submit</a> , <a href="/shop">shop</a>
+        <div class="col-6 text-left">
+            <a class="rounded" href="/">home</a><a class="ml-2 rounded" href="/shop">shop</a>{% if logged_in == False %}<a class="ml-2 rounded" href="/login">login</a>
+        {% elif logged_in == True %}<a class="ml-2 rounded" href="/logout">logout</a>
+        {% endif %}
     </div>
-    <div class="col-6 text-center">
-        <span class="sort">sort: </span><a href="/top">top</a> , <a href="/new">new</a>
+    <div class="col-6 text-right">
+        sort: <a class="rounded" href="/{{company}}/top">top</a><a class="ml-2 rounded" href="/{{company}}/new">new</a>
     </div>
 </div>
 
@@ -25,11 +27,19 @@
         <div class="content">
             {% for instance in object_list %}
             <div class="row">
-                <div class="col-1 text-right mt-3 arrow-col">
-                    <p><a href="/">&uarr;</a><br><a href="/">&darr;</a></p>
+                <div class="col-1 mt-3 arrow-col">
+                    {% csrf_token %}
+                    <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded">&uarr;</span><br><span name="down" class="down-arrow rounded">&darr;</span></p>
                 </div>
-                <div class="col-11 text-left">
-                    <p class="pb-2 content-col">{{ instance.description }}</p>
+                <div class="col-11">
+                    <p class="pb-0 mb-2 content-col">{{ instance.description }}</p>
+
+                    <div class="row date-row">
+                        <div class="col-12 text-right mb-4">
+                            {{ instance.created_at }}
+                        </div>
+                    </div>
+
                 </div>
             </div>
             {% endfor %}
@@ -38,13 +48,6 @@
 </div>
 
 
-
-<!--        <div class="row justify-content-center">-->
-<!--            <div class="col justify-content-center">-->
-
-<!--            </div>-->
-<!--        </div>-->
-        </div>
 
 {% endblock %}
 
