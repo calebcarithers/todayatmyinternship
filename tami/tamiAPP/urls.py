@@ -15,11 +15,36 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 
-from .views import submit_page, home_page, detail_page
+from .views import submit_page, home_page, new_home_page, detail_new_page, detail_top_page, login_page
+
+
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
+
+    # home page urls
     path('', home_page, name="home"),
+    path('new/', new_home_page, name="new"),
+    path('top/', home_page, name="home"),
+    path('new/<str:company>/top', detail_top_page, name="detail_company_top"),
+    path('top/<str:company>/top', detail_top_page, name="detail_company_top"),
+
+    # company page urls
+    path('company/<str:company>', detail_top_page, name="detail"),
+    # path('<str:company>', detail_top_page, name="detail"),
+    path('<str:company>/top', detail_top_page, name="detail_top"),
+    path('<str:company>/new', detail_new_page, name="detail_new"),
+
+    # menu bar urls
     path('submit/', submit_page, name="submit"),
-    path('company/<str:company>', detail_page, name="detail"),
+    path('login/', login_page, name="login"),
+    path('logout/', auth_views.LogoutView.as_view(), name="logout"),
+
+    # social-auth urls
+    path('social-auth/', include('social_django.urls', namespace="social")),
+
+    # auth urls
+    path('accounts/', include('django.contrib.auth.urls'))
 ]

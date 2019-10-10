@@ -2,11 +2,13 @@
 
 {% block content %}
 <div class="row menu-row">
-    <div class="col-6 text-center">
-        <a id="submit-home-button" href="/submit">submit</a> , <a href="/shop">shop</a>
+    <div class="col-6 text-left">
+        <a class="rounded" id="submit-home-button" href="/submit">submit</a><a class="ml-2 rounded" href="/shop">shop</a>{% if logged_in == False %}<a class="ml-2 rounded login-button" href="/login">login</a>
+        {% elif logged_in == True %}<a class="ml-2 rounded" href="/logout">logout</a>
+        {% endif %}
     </div>
-    <div class="col-6 text-center">
-        sort: <a href="/top">top</a> , <a href="/new">new</a>
+    <div class="col-6 text-right">
+        sort: <a class="rounded" href="/top">top</a><a class="ml-2 rounded" href="/new">new</a>
     </div>
 </div>
 
@@ -15,10 +17,11 @@
     {% for instance in object_list %}
     <div class="row">
         <div class="col-1 mt-3 arrow-col">
-            <p name="{{instance.pk}}"><span class="up-arrow rounded">&uarr;</span><br><span class="down-arrow rounded">&darr;</span></p>
+            {% csrf_token %}
+            <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded" data-trigger="manual" data-toggle="tooltip" data-placement="right" title="Must be logged in">&uarr;</span><br><span name="down" class="down-arrow rounded">&darr;</span></p>
         </div>
         <div class="col-11">
-            <p class="pb-0 mb-2 content-col">{{ instance.description }} @ <a class="company" href="company/{{ instance.where }}">{{ instance.where }}</a></p>
+            <p class="pb-0 mb-2 content-col">{{ instance.description }} @ <a class="company" href="{{ instance.where }}/top">{{ instance.where }}</a></p>
 
             <div class="row date-row">
                 <div class="col-12 text-right mb-4">
@@ -31,32 +34,6 @@
     {% endfor %}
 </div>
 
-<script>
-    $(document).ready(function() {
-
-        function isTouchDevice() {
-            return 'ontouchstart' in document.documentElement;
-        }
-
-        if (isTouchDevice()) {
-            $(".up-arrow, .down-arrow").click(function () {
-                var pk = $(this).parent().attr("name");
-            }).on("touchstart", function() {
-                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
-            }).on("touchend", function() {
-                $(this).css({"background":"white"})
-            })
-        } else {
-            $(".up-arrow, .down-arrow").click(function () {
-                var pk = $(this).parent().attr("name");
-            }).on("mouseover", function() {
-                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
-            }).on("mouseleave", function() {
-                $(this).css({"background":"white"})
-            })
-        }
-    })
-</script>
 
 {% endblock %}
 

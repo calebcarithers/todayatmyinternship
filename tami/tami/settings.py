@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'tami.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tami',
+        'NAME': 'tami_base',
         'USER': 'calebcarithers',
         'PASSWORD': dbPass,
         'HOST':'localhost',

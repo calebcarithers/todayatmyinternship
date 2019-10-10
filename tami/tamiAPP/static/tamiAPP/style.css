@@ -19,7 +19,7 @@ body, html {
 
 .description, .where {
     height: 20vh;
-    width: 50vmax;
+    width: 80vw;
     line-height: 20px;
     font-size: 100px;
     padding-left: 10px;
@@ -32,15 +32,13 @@ body, html {
     font-weight: bold;
     font-style: oblique;
     color: #AAAAAA;
+    margin-top: 4px;
 }
 
 .description {
     margin-bottom: 4px;
 }
 
-.where {
-    margin-top: 4px;
-}
 
 .at {
     font-size: 5.5vw;
@@ -48,11 +46,46 @@ body, html {
 }
 
 #title {
-    font-size: calc(1em + 4.5vmax);
+    font-size: calc(1em + 4.7vmax);
     line-height: calc(0.6em + 3.8vmax);
     font-weight: bold;
     margin-bottom: 0px;
     //background: green;
+}
+
+.content-col {
+    font-size: calc(0.6em + 1vw);
+    line-height:calc(0.7em + 1.5vh + 1.5vw);
+}
+
+.date-row {
+    font-size: calc(0.1em + 1vw);
+    padding: 0 0 0 0;
+    line-height: 10px;
+}
+
+.menu-row {
+    font-size: calc(0.6em + 1vw);
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.login, .login-text {
+    font-size: calc(0.2em + 0.2vw);
+    line-height: calc(1em + 0.4vh);
+}
+
+.or {
+    font-size: calc(0.4em + 0.2vw);
+}
+
+label {
+    font-size: calc(0.2em + 0.2vw);
+    line-height: 0.75em;
+    margin: 0;
+    padding: 0;
 }
 
 @media (min-width: 576px) {
@@ -61,6 +94,13 @@ body, html {
             line-height: calc(0.75em + 1.4vh + 2vw);
             //background: yellow;
     }
+    .content-col {
+        font-size:calc(0.5em + 1.8vw);
+        line-height:calc(0.75em + 1vh + 1vw);
+    }
+    .menu-row {
+        font-size: calc(0.6em + 0.5vw);
+    }
 }
 
 @media (min-width: 992px) {
@@ -68,6 +108,9 @@ body, html {
         font-size:calc(1em + 4.5vw);
         line-height: calc(0.75em + 0.5vh + 1vw);
         //background: orange;
+    }
+    .content-col {
+        font-size:calc(0.7em + 1vw);
     }
 
 }
@@ -107,6 +150,7 @@ body, html {
 .menu-row a {
     color: lightgrey;
     text-decoration: none;
+    padding: 2px;
 }
 
 .title-row {
@@ -119,10 +163,15 @@ body, html {
 
 .up-arrow, .down-arrow {
     display: inline-block;
+    padding: 2px;
 }
 
-.date-row {
-    font-size: 10px;
-    padding: 0 0 0 0;
-    line-height: 10px;
+.login-type {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #f7f7f7;
+    margin-bottom: 0.5em;
 }
+ .login-type a {
+    color: #d6d6d6;
+ }

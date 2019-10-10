@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{% static 'tamiApp/style.css' %}">
+        <link rel="stylesheet" href="{% static 'tamiAPP/style.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,700i,900&display=swap" rel="stylesheet">
         <title>todayatmyinternship</title>
 
@@ -21,6 +21,93 @@
         </div>
         {% block content %}{% endblock %}
     </div>
+
+    <script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $(document).ready(function() {
+
+        function isTouchDevice() {
+            return 'ontouchstart' in document.documentElement;
+        }
+
+        if (isTouchDevice()) {
+            $(".up-arrow, .down-arrow").click(function () {
+                var pk = $(this).parent().attr("name");
+                var which = $(this).attr("name");
+                console.log(pk);
+                console.log(which);
+
+                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
+                $.post('.', {
+                    item_pk: pk,
+                    item_vote: which,
+                    csrfmiddlewaretoken: CSRFtoken
+                })
+            }).on("touchstart", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("touchend", function() {
+                $(this).css({"background":"white"})
+            })
+
+            $(".menu-row").find("a").on("touchstart", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("touchend", function() {
+                $(this).css({"background":"white"})
+            })
+        } else {
+            $(".up-arrow, .down-arrow").click(function () {
+                var login = $(".login-button");
+                var selected = $(this)
+                console.log(selected)
+                var pk = $(this).parent().attr("name");
+                var which = $(this).attr("name");
+                console.log(pk);
+                console.log(which);
+
+                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
+                $.post('.',
+
+                {
+                    item_pk: pk,
+                    item_vote: which,
+                    csrfmiddlewaretoken: CSRFtoken
+                },
+
+                function(response) {
+                    console.log(response);
+                    console.log(response.logged_in)
+                    if (response.logged_in == 'true') {
+
+                    } else {
+                        console.log("not logged in");
+                        selected.css({'transition-timing-function':'ease','transition':'0.3s','background':'#fff0f0', 'color':'#fa4848'});
+<!--                        login.css({'transition-timing-function':'ease','transition':'0.3s','background':'#e1fadc', 'color':'#7cfc62'});-->
+                        selected.tooltip('toggle');
+                        setTimeout(function(){
+                            selected.css({'transition-timing-function':'ease','transition':'0.3s','background':'white', 'color':'lightgrey'});
+<!--                            login.css({'transition-timing-function':'ease','transition':'0.3s','background':'white', 'color':'lightgrey'});-->
+                            selected.tooltip('toggle');
+                        }, 1000)
+                    }
+                })
+
+            }).on("mouseover", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("mouseleave", function() {
+                $(this).css({"background":"white"})
+            })
+
+            $(".menu-row").find("a").on("mouseover", function() {
+                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
+            }).on("mouseleave", function() {
+                $(this).css({"background":"white"})
+            })
+        } //end else
+    })
+</script>
 
         <script
   src="https://code.jquery.com/jquery-3.4.1.js"
