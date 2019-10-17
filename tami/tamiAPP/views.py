@@ -53,13 +53,14 @@ def home_page(request):
 
     context = {
         "object_list": queryset,
-        "logged_in": logged_in
+        "logged_in": logged_in,
+        "sort": "top"
     }
     print(logged_in)
 
     return render(request, "tamiAPP/home.html", context)
 
-def new_home_page(request):
+def home_new_page(request):
     if request.method == "POST":
         if request.user.is_authenticated:
             # print("user is logged in as: ")
@@ -85,12 +86,13 @@ def new_home_page(request):
 
     context = {
         "object_list":queryset,
-        "logged_in": logged_in
+        "logged_in": logged_in,
+        "sort": "new"
     }
 
     return render(request, "tamiAPP/home.html", context)
 
-def detail_top_page(request, company=""):
+def detail_page(request, company=""):
     if request.method == "POST":
         print("got post")
         if request.user.is_authenticated:
