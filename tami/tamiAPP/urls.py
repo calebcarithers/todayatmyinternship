@@ -28,8 +28,8 @@ urlpatterns = [
     path('', home_page, name="home"),
     path('new/', home_new_page, name="new"),
     path('top/', home_page, name="home"),
-    path('new/<str:company>/top', detail_page, name="detail_company_top"),
-    path('top/<str:company>/top', detail_page, name="detail_company_top"),
+    # path('new/<str:company>/top', detail_page, name="detail_company_top"),
+    # path('top/<str:company>/top', detail_page, name="detail_company_top"),
 
     # company page urls
     path('company/<str:company>', detail_page, name="detail"),

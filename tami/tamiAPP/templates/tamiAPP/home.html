@@ -21,7 +21,7 @@
             <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded" data-trigger="manual" data-toggle="tooltip" data-placement="right" title="Must be logged in">&uarr;</span><br><span name="down" class="down-arrow rounded">&darr;</span><br><span class="votes">{{ instance.vote_score }}</span></p>
         </div>
         <div class="col-11">
-            <p class="pb-0 mb-2 content-col">{{ instance.description }} @ <a class="company" href="{{ instance.where }}/top">{{ instance.where }}</a></p>
+            <p class="pb-0 mb-2 content-col">{{ instance.description }} @ <a class="company" href="/{{ instance.where }}/top">{{ instance.where }}</a></p>
 
             <div class="row date-row">
                 <div class="col-12 text-right mb-4">
