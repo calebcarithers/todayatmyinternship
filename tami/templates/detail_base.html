@@ -1,23 +1,11 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-            <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-122350886-4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-122350886-4');
-    </script>
-
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="{% static "tamiApp/style.css" %}">
+        <link rel="stylesheet" href="{% static 'tamiAPP/style.css' %}">
         <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700,700i,900&display=swap" rel="stylesheet">
 
         {% block head %}{% endblock %}
@@ -29,70 +17,12 @@
         {% block content %}{% endblock %}
     </div>
 
-    <script>
-    $(document).ready(function() {
-
-        function isTouchDevice() {
-            return 'ontouchstart' in document.documentElement;
-        }
-
-        if (isTouchDevice()) {
-            $(".up-arrow, .down-arrow").click(function () {
-                var pk = $(this).parent().attr("name");
-                var which = $(this).attr("name");
-                console.log(pk);
-                console.log(which);
-
-                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
-                $.post('.', {
-                    item_pk: pk,
-                    item_vote: which,
-                    csrfmiddlewaretoken: CSRFtoken
-                })
-            }).on("touchstart", function() {
-                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
-            }).on("touchend", function() {
-                $(this).css({"background":"white"})
-            })
-
-            $(".menu-row").find("a").on("touchstart", function() {
-                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
-            }).on("touchend", function() {
-                $(this).css({"background":"white"})
-            })
-        } else {
-            $(".up-arrow, .down-arrow").click(function () {
-                var pk = $(this).parent().attr("name");
-                var which = $(this).attr("name");
-                console.log(pk);
-                console.log(which);
-
-                var CSRFtoken = $('input[name=csrfmiddlewaretoken]').val();
-                $.post(window.location.pathname, {
-                    item_pk: pk,
-                    item_vote: which,
-                    csrfmiddlewaretoken: CSRFtoken
-                })
-
-            }).on("mouseover", function() {
-                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
-            }).on("mouseleave", function() {
-                $(this).css({"background":"white"})
-            })
-
-            $(".menu-row").find("a").on("mouseover", function() {
-                $(this).css({"background":"#F8F8F8", "cursor":"pointer"})
-            }).on("mouseleave", function() {
-                $(this).css({"background":"white"})
-            })
-        } //end else
-    })
-</script>
-
+        <script src="{% static 'tamiAPP/UserInteraction.js' %}"></script>
         <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+        </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>

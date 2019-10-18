@@ -13,12 +13,13 @@
 
 <div class="row menu-row">
         <div class="col-6 text-left">
-            <a class="rounded" href="/">home</a><a class="ml-2 rounded" href="/shop">shop</a>{% if logged_in == False %}<a class="ml-2 rounded" href="/login">login</a>
+            <a class="rounded" href="/">home</a>{% if logged_in == False %}<a class="ml-2 rounded" href="/login">login</a>
         {% elif logged_in == True %}<a class="ml-2 rounded" href="/logout">logout</a>
         {% endif %}
     </div>
     <div class="col-6 text-right">
-        sort: <a class="rounded" href="/{{company}}/top">top</a><a class="ml-2 rounded" href="/{{company}}/new">new</a>
+<!--        sort: <a class="rounded" href="/{{company}}/top">top</a><a class="ml-2 rounded" href="/{{company}}/new">new</a>-->
+        sort: {% if sort == 'top' %}<a class="rounded" href="/{{company}}/top" style="color:#4f4f4f">top</a><a class="ml-2 rounded" href="/{{company}}/new">new</a>{% else %}<a class="rounded" href="/{{company}}/top">top</a><a class="ml-2 rounded" href="/{{company}}/new" style="color:#4f4f4f">new</a>{% endif %}
     </div>
 </div>
 
@@ -29,7 +30,7 @@
             <div class="row">
                 <div class="col-1 mt-3 arrow-col">
                     {% csrf_token %}
-                    <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded">&uarr;</span><br><span name="down" class="down-arrow rounded">&darr;</span></p>
+                    <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded">&uarr;</span><br><span name="down" class="down-arrow rounded">&darr;</span><br><span class="votes">{{ instance.vote_score }}</span></p>
                 </div>
                 <div class="col-11">
                     <p class="pb-0 mb-2 content-col">{{ instance.description }}</p>

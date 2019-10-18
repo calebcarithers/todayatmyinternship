@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
-from .views import submit_page, home_page, new_home_page, detail_new_page, detail_top_page, login_page
+from .views import submit_page, home_page, home_new_page, detail_new_page, detail_page, login_page
 
 
 
@@ -26,15 +26,15 @@ urlpatterns = [
 
     # home page urls
     path('', home_page, name="home"),
-    path('new/', new_home_page, name="new"),
+    path('new/', home_new_page, name="new"),
     path('top/', home_page, name="home"),
-    path('new/<str:company>/top', detail_top_page, name="detail_company_top"),
-    path('top/<str:company>/top', detail_top_page, name="detail_company_top"),
+    # path('new/<str:company>/top', detail_page, name="detail_company_top"),
+    # path('top/<str:company>/top', detail_page, name="detail_company_top"),
 
     # company page urls
-    path('company/<str:company>', detail_top_page, name="detail"),
+    path('company/<str:company>', detail_page, name="detail"),
     # path('<str:company>', detail_top_page, name="detail"),
-    path('<str:company>/top', detail_top_page, name="detail_top"),
+    path('<str:company>/top', detail_page, name="detail_top"),
     path('<str:company>/new', detail_new_page, name="detail_new"),
 
     # menu bar urls

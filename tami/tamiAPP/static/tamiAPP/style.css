@@ -77,6 +77,10 @@ body, html {
     line-height: calc(1em + 0.4vh);
 }
 
+.footer {
+    font-size: calc(0.2em + 0.2vw);
+}
+
 .or {
     font-size: calc(0.4em + 0.2vw);
 }
@@ -113,6 +117,11 @@ label {
         font-size:calc(0.7em + 1vw);
     }
 
+    .date-row {
+        font-size: calc(0.1em + 0.5vw);
+        line-height: 10px;
+    }
+
 }
 
 .content {
@@ -123,7 +132,7 @@ label {
 
 .arrow-col {
     font-size: 20px;
-    line-height: 20px;
+    line-height: 17px;
 }
 
 .arrow-col a {
@@ -174,4 +183,11 @@ label {
 }
  .login-type a {
     color: #d6d6d6;
+ }
+
+ .votes {
+ display: block;
+    width: 20px;
+    font-size: 10px;
+    padding-left:6px;
  }

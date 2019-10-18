@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row menu-row">
     <div class="col-6 text-left">
-        <a class="rounded" id="submit-home-button" href="/">home</a><a class="ml-2 rounded" href="/shop">shop</a>
+        <a class="rounded" id="submit-home-button" href="/">home</a>
     </div>
 </div>
 
@@ -12,7 +12,12 @@
 <div class="content">
     <div class="row">
         <div class="col text-center login-text">
-            register/login
+            login with:
+        </div>
+    </div>
+    <div class="row fixed-bottom pb-2">
+        <div class="col text-center login-text">
+            (all posts are anonymous, no data is/will ever be shared)
         </div>
     </div>
 <!--    <form>-->
@@ -42,25 +47,26 @@
 <!--    </div>-->
 
 
-    <div class="row text-center mt-5">
+    <div class="row text-center mt-2">
         <div class="col-12 login">
             <div class="row justify-content-center login-row">
-                <div class="col-6 rounded login-type">
-                    <a href="{% url 'social:begin' 'facebook' %}">login with facebook</a>
+                <div class="col-4 rounded login-type">
+                    <a href="{% url 'social:begin' 'facebook' %}">facebook</a>
                 </div>
             </div>
             <div class="row justify-content-center login-row">
-                <div class="col-6 rounded login-type">
-                    <a href="{% url 'social:begin' 'instagram' %}">login with instagram</a>
+                <div class="col-4 rounded login-type">
+                    <a href="{% url 'social:begin' 'instagram' %}">instagram</a>
                 </div>
             </div>
             <div class="row justify-content-center login-row">
-                <div class="col-6 rounded login-type">
-                    <a href="{% url 'social:begin' 'twitter' %}">login with twitter</a>
+                <div class="col-4 rounded login-type">
+                    <a href="{% url 'social:begin' 'twitter' %}">twitter</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}
 
