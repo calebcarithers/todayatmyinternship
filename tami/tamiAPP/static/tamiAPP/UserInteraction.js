@@ -26,7 +26,7 @@ $(document).ready(function() {
                 item_vote: which,
                 csrfmiddlewaretoken: CSRFtoken
             },
-            function(response) {
+            function(response) {q
                 console.log(response);
                 console.log(response.logged_in)
                 if ((response.logged_in == 'true') || (response.logged_in == undefined)) {
