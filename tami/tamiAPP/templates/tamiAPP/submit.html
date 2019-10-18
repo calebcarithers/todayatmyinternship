@@ -4,7 +4,7 @@
 {% block content %}
 <div class="row menu-row">
     <div class="col-6 text-left">
-        <a class="rounded" id="submit-home-button" href="/">home</a><a class="ml-2 rounded" href="/shop">shop</a>{% if logged_in == False %}<a class="ml-2 rounded" href="/login">login</a>
+        <a class="rounded" id="submit-home-button" href="/">home</a>{% if logged_in == False %}<a class="ml-2 rounded" href="/login">login</a>
         {% elif logged_in == True %}<a class="ml-2 rounded" href="/logout">logout</a>
         {% endif %}
     </div>

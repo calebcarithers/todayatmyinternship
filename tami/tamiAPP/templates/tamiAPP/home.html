@@ -3,7 +3,7 @@
 {% block content %}
 <div class="row menu-row">
     <div class="col-6 text-left">
-        <a class="rounded" id="submit-home-button" href="/submit">submit</a><a class="ml-2 rounded" href="/shop">shop</a>{% if logged_in == False %}<a class="ml-2 rounded login-button" href="/login">login</a>
+        <a class="rounded" id="submit-home-button" href="/submit">submit</a>{% if logged_in == False %}<a class="ml-2 rounded login-button" href="/login">login</a>
         {% elif logged_in == True %}<a class="ml-2 rounded" href="/logout">logout</a>
         {% endif %}
     </div>
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-1 mt-3 arrow-col">
             {% csrf_token %}
-            <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded" data-trigger="manual" data-toggle="tooltip" data-placement="right" title="Must be logged in">&uarr;</span><span style="top: 10px;">{{ instance.vote_score }}</span><br><span name="down" class="down-arrow rounded">&darr;</span></p>
+            <p name="{{instance.pk}}"><span name="up" class="up-arrow rounded" data-trigger="manual" data-toggle="tooltip" data-placement="right" title="Must be logged in">&uarr;</span><br><span name="down" class="down-arrow rounded">&darr;</span><br><span class="votes">{{ instance.vote_score }}</span></p>
         </div>
         <div class="col-11">
             <p class="pb-0 mb-2 content-col">{{ instance.description }} @ <a class="company" href="{{ instance.where }}/top">{{ instance.where }}</a></p>

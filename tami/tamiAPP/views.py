@@ -120,7 +120,8 @@ def detail_page(request, company=""):
     context = {
         "object_list": queryset,
         "company":company,
-        "logged_in": logged_in
+        "logged_in": logged_in,
+        "sort":"top"
     }
     return render(request, "tamiAPP/detail.html", context)
 
@@ -151,7 +152,8 @@ def detail_new_page(request, company=""):
     context = {
         "object_list": queryset,
         "company": company,
-        "logged_in": logged_in
+        "logged_in": logged_in,
+        "sort": "new"
     }
     return render(request, "tamiAPP/detail.html", context)
 
